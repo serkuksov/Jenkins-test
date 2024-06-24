@@ -1,5 +1,10 @@
 pipeline {
-  agent any
+  agent {
+        docker {
+            image 'python:3.12-alpine'
+            args '-v /tmp:/tmp --network host'
+        }
+    }
   stages {
     stage('clone') {
       steps {
@@ -18,6 +23,5 @@ pipeline {
         sh 'pytest -sv --alluredir=allure-results'
       }
     }
-
   }
 }
