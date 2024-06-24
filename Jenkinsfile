@@ -20,6 +20,7 @@ pipeline {
 
     stage('Tests') {
       steps {
+        sh 'pip freeze'
         sh 'pytest -sv --alluredir=allure-results'
       }
     }
