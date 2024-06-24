@@ -1,7 +1,7 @@
 pipeline {
   agent {
         docker {
-            image 'python:3.12-alpine'
+            image 'mcr.microsoft.com/playwright/python:v1.44.0-jammy'
             args '--network host'
         }
     }
