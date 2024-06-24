@@ -2,13 +2,13 @@ pipeline {
   agent {
         docker {
             image 'python:3.12-alpine'
-            args '-v /tmp:/tmp --network host'
+            args '--network host'
         }
     }
   stages {
-    stage('clone') {
+    stage('checkout') {
       steps {
-        sh 'git pull'
+        checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/serkuksov/Jenkins-test.git']])
       }
     }
 
